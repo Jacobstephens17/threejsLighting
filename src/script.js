@@ -41,15 +41,35 @@ walls.position.z = -1.5
 house.add(walls)
 
 
-// ROOF
-const roof = new THREE.Mesh(
-    new THREE.ConeBufferGeometry(6,2,6),
-    new THREE.MeshStandardMaterial({color:'red'})
+
+const upperWalls = new THREE.Mesh(
+    new THREE.BoxBufferGeometry(10.0,2,5),
+    new THREE.MeshNormalMaterial({color: 'black'})
+    
 )
-// house.add(roof)
-// roof.position.y = 3.25
-// roof.position.z = -1.4
-// roof.rotation.y = 150
+
+upperWalls.position.x = 5.5
+upperWalls.position.y = 3
+upperWalls.position.z = -4
+upperWalls.rotation.set(0,55,0)
+house.add(upperWalls)
+
+
+const upperWalls2 = new THREE.Mesh(
+    new THREE.BoxBufferGeometry(10.0,2,5),
+    new THREE.MeshNormalMaterial({color: 'black'})
+    
+)
+
+upperWalls2.position.x = 0
+upperWalls2.position.y = 5
+upperWalls2.position.z = -1.5
+house.add(upperWalls2)
+
+
+
+
+
 
 // Window 
 const windows = new THREE.Mesh(
@@ -76,9 +96,73 @@ windows2.rotation.z = 0
 house.add(windows2)
 
 
+const windowsMid = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(9.5,1.8),
+    new THREE.MeshBasicMaterial({color:'black'})
+)
+
+windowsMid.position.x = 2.85
+windowsMid.position.y = 3
+windowsMid.position.z = -4
+windowsMid.rotation.x = 0
+windowsMid.rotation.y = -7.8
+windowsMid.rotation.z = 0
+house.add(windowsMid)
+
+
+const windows2Mid = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(9.5,1.8),
+    new THREE.MeshBasicMaterial({color:'black'})
+)
+windows2Mid.position.z = -4.05
+windows2Mid.position.y = 3 
+windows2Mid.position.x = 8.05
+windows2Mid.rotation.x = 0
+windows2Mid.rotation.y = 7.885
+windows2Mid.rotation.z = 0
+house.add(windows2Mid)
+
+
+
+
+
+
+
+
+
+const windowsTop = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(9.5,1.8),
+    new THREE.MeshBasicMaterial({color:'black'})
+)
+
+windowsTop.position.z = 1.01
+windowsTop.position.y = 5
+windowsTop.position.x = 0
+windowsTop.rotation.z = 0
+house.add(windowsTop)
+
+
+const windows2Top = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(9.5,1.8),
+    new THREE.MeshBasicMaterial({color:'black'})
+)
+windows2Top.position.z = -4.05
+windows2Top.position.y = 5
+windows2Top.position.x = 0
+windows2Top.rotation.x = 0
+windows2Top.rotation.y = 3.14
+windows2Top.rotation.z = 0
+house.add(windows2Top)
+
+
+
+
+
+
+
 // Floor
 const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 60),
+    new THREE.PlaneGeometry(40, 40),
     new THREE.MeshStandardMaterial({ color: 'green' })
 )
 
@@ -94,27 +178,27 @@ const bushMaterial = new THREE.MeshStandardMaterial({color:'limegreen'})
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial)
 house.add(bush1)
 bush1.scale.set(0.5,0.5,0.5)
-bush1.position.set(5.5,0.3,-3.4)
+bush1.position.set(-5.5,0.3,-3.4)
 
 const bush2 = new THREE.Mesh(bushGeometry, bushMaterial)
 house.add(bush2)
 bush2.scale.set(0.5,0.5,0.5)
-bush2.position.set(5.5,0.3,-2.4)
+bush2.position.set(-5.5,0.3,-2.2)
 
 const bush3 = new THREE.Mesh(bushGeometry, bushMaterial)
 house.add(bush3)
 bush3.scale.set(0.5,0.5,0.5)
-bush3.position.set(5.5,0.3,-1.4)
+bush3.position.set(-5.5,0.3,-1)
 
 const bush4 = new THREE.Mesh(bushGeometry, bushMaterial)
-house.add(bush4)
+// house.add(bush4)
 bush4.scale.set(0.5,0.5,0.5)
-bush4.position.set(5.5,0.3,-.4)
+bush4.position.set(-5.5,0.3,-.4)
 
 const bush5 = new THREE.Mesh(bushGeometry, bushMaterial)
-house.add(bush5)
+// house.add(bush5)
 bush5.scale.set(0.5,0.5,0.5)
-bush5.position.set(5.5,0.3,.6)
+bush5.position.set(-5.5,0.3,.6)
 
 
 
@@ -124,7 +208,7 @@ const door = new THREE.Mesh(
     new THREE.MeshStandardMaterial({color:'white'})
 )
 house.add(door)
-door.position.set(-5.05,.85,0)
+door.position.set(-5.05,.85,.3)
 door.rotation.y = 4.709
 
 
@@ -135,9 +219,9 @@ const walkway = new THREE.Mesh(
     new THREE.MeshStandardMaterial({color:'black'})
 )
 house.add(walkway)
-walkway.position.set(-8.5,0,-4)
+walkway.position.set(7.5,.1,-2)
 walkway.rotation.set(4.7, 0, 0)
-walkway.scale.set(3.5,2,5)
+walkway.scale.set(2.5,2,5)
 
 
 
