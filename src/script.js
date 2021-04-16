@@ -67,7 +67,44 @@ upperWalls2.position.z = -1.5
 house.add(upperWalls2)
 
 
+// Pillars 
 
+const pillar = new THREE.Mesh(
+    new THREE.CylinderBufferGeometry(.2,.2,2,50),
+    new THREE.MeshNormalMaterial()
+)
+
+house.add(pillar)
+pillar.position.set(-4.8,3,.8)
+
+
+
+const pillar2 = new THREE.Mesh(
+    new THREE.CylinderBufferGeometry(.2,.2,2,50),
+    new THREE.MeshNormalMaterial()
+)
+
+house.add(pillar2)
+pillar2.position.set(-4.8,3,-.8)
+
+
+
+const pillar3 = new THREE.Mesh(
+    new THREE.CylinderBufferGeometry(.2,.2,2,50),
+    new THREE.MeshNormalMaterial()
+)
+
+house.add(pillar3)
+pillar3.position.set(-4.8,3,-2.4)
+
+
+const pillar4 = new THREE.Mesh(
+    new THREE.CylinderBufferGeometry(.2,.2,2,50),
+    new THREE.MeshNormalMaterial()
+)
+
+house.add(pillar4)
+pillar4.position.set(-4.8,3,-3.8)
 
 
 
@@ -230,12 +267,12 @@ walkway.scale.set(2.5,2,5)
  * Lights
  */
 // Ambient light
-const ambientLight = new THREE.AmbientLight('blue', 1)
+const ambientLight = new THREE.AmbientLight('#b9d5ff', .5)
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001)
 scene.add(ambientLight)
 
 // Directional light
-const moonLight = new THREE.DirectionalLight('gold', .8)
+const moonLight = new THREE.DirectionalLight('#b9d5ff', .5)
 moonLight.position.set(4, 5, - 2)
 gui.add(moonLight, 'intensity').min(0).max(3).step(0.001)
 gui.add(moonLight.position, 'x').min(- 5).max(5).step(0.001)
@@ -272,7 +309,7 @@ window.addEventListener('resize', () =>
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.x = 0
-camera.position.y = 3
+camera.position.y = 10
 camera.position.z = 10
 scene.add(camera)
 
@@ -298,7 +335,10 @@ const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
 
-    // Update controls
+    // Update control
+    camera.position.x = Math.sin(elapsedTime / 4) * 20
+    camera.position.y = Math.sin(elapsedTime) + 10
+    camera.position.z = Math.cos(elapsedTime / 60 ) * 6
     controls.update()
 
     // Render
