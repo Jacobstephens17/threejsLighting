@@ -31,7 +31,7 @@ scene.add(house)
 // WALLS
 const walls = new THREE.Mesh(
     new THREE.BoxBufferGeometry(10.0,2,5),
-    new THREE.MeshStandardMaterial({color: 'brown'})
+    new THREE.MeshNormalMaterial({color: 'black'})
     
 )
 
@@ -54,19 +54,34 @@ const roof = new THREE.Mesh(
 // Window 
 const windows = new THREE.Mesh(
     new THREE.PlaneBufferGeometry(9.5,1.8),
-    new THREE.MeshStandardMaterial({color:'black'})
+    new THREE.MeshBasicMaterial({color:'black'})
 )
+
 windows.position.z = 1.01
 windows.position.y = 1
 windows.position.x = 0
 windows.rotation.z = 0
 house.add(windows)
 
+const windows2 = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(9.5,1.8),
+    new THREE.MeshBasicMaterial({color:'black'})
+)
+windows2.position.z = -4.05
+windows2.position.y = 1
+windows2.position.x = 0
+windows2.rotation.x = 0
+windows2.rotation.y = 3.14
+windows2.rotation.z = 0
+house.add(windows2)
+
+
 // Floor
 const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(20, 20),
-    new THREE.MeshStandardMaterial({ color: '#a9c388' })
+    new THREE.PlaneGeometry(60, 60),
+    new THREE.MeshStandardMaterial({ color: 'green' })
 )
+
 floor.rotation.x = - Math.PI * 0.5
 floor.position.y = 0
 scene.add(floor)
@@ -102,7 +117,6 @@ bush5.scale.set(0.5,0.5,0.5)
 bush5.position.set(5.5,0.3,.6)
 
 
-// Lights
 
 // Door
 const door = new THREE.Mesh(
@@ -114,6 +128,17 @@ door.position.set(-5.05,.85,0)
 door.rotation.y = 4.709
 
 
+// Walkway
+
+const walkway = new THREE.Mesh(
+    new THREE.PlaneBufferGeometry(2,22),
+    new THREE.MeshStandardMaterial({color:'black'})
+)
+house.add(walkway)
+walkway.position.set(-8.5,0,-4)
+walkway.rotation.set(4.7, 0, 0)
+walkway.scale.set(3.5,2,5)
+
 
 
 
@@ -121,14 +146,14 @@ door.rotation.y = 4.709
  * Lights
  */
 // Ambient light
-const ambientLight = new THREE.AmbientLight('#ffffff', 0.5)
+const ambientLight = new THREE.AmbientLight('blue', 1)
 gui.add(ambientLight, 'intensity').min(0).max(1).step(0.001)
 scene.add(ambientLight)
 
 // Directional light
-const moonLight = new THREE.DirectionalLight('#ffffff', 0.5)
+const moonLight = new THREE.DirectionalLight('gold', .8)
 moonLight.position.set(4, 5, - 2)
-gui.add(moonLight, 'intensity').min(0).max(1).step(0.001)
+gui.add(moonLight, 'intensity').min(0).max(3).step(0.001)
 gui.add(moonLight.position, 'x').min(- 5).max(5).step(0.001)
 gui.add(moonLight.position, 'y').min(- 5).max(5).step(0.001)
 gui.add(moonLight.position, 'z').min(- 5).max(5).step(0.001)
@@ -162,9 +187,9 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 4
-camera.position.y = 2
-camera.position.z = 5
+camera.position.x = 0
+camera.position.y = 3
+camera.position.z = 10
 scene.add(camera)
 
 // Controls
